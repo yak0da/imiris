@@ -43,10 +43,10 @@ def analyze_channel_util_vs_l(N, alpha, l_min=100, l_max=5000, l_step=100):
     l_values = []
     util_values = []
     
-    print(f"Анализ зависимости channel_util от длины пакета l")
-    print(f"Параметры: N={N}, alpha={alpha}")
-    print(f"Диапазон l: {l_min} - {l_max} байт, шаг: {l_step}")
-    print("=" * 60)
+    # print(f"Анализ зависимости channel_util от длины пакета l")
+    # print(f"Параметры: N={N}, alpha={alpha}")
+    # print(f"Диапазон l: {l_min} - {l_max} байт, шаг: {l_step}")
+    # print("=" * 60)
     
     l = l_min
     while l <= l_max:
@@ -65,12 +65,12 @@ def analyze_channel_util_vs_l(N, alpha, l_min=100, l_max=5000, l_step=100):
         
         l += l_step
     
-    print("=" * 60)
-    print("\nРезультаты:")
-    print(f"{'l (байты)':<12} {'channel_util':<15}")
-    print("-" * 30)
-    for l, util in zip(l_values, util_values):
-        print(f"{l:<12} {util:<15.6f}")
+    # print("=" * 60)
+    # print("\nРезультаты:")
+    # print(f"{'l (байты)':<12} {'channel_util':<15}")
+    # print("-" * 30)
+    # for l, util in zip(l_values, util_values):
+    #     print(f"{l:<12} {util:<15.6f}")
     
     return l_values, util_values
 

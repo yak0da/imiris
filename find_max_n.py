@@ -34,32 +34,24 @@ def run_sim(N, alpha, simtime=10, B=100, L=30, l=1500, qlimit=-1):
 
 
 def find_max_N(alpha, util_threshold=0.5, max_search=500):
-    """
-    Находит максимальное N, при котором channel_util <= util_threshold.
-    Возвращает (N_found, channel_util).
-    """
-
+    # Находит максимальное N, при котором channel_util <= util_threshold.
+    # Возвращает (N_found, channel_util).
     low, high = 1, max_search
     best_N = 0
     best_util = 0.0
-
     while low <= high:
         mid = (low + high) // 2
         util = run_sim(mid, alpha)
-
         if util is None:
             print("ОШИБКА: util None при N =", mid)
             break
-
         print(f"N={mid}, util={util:.4f}")
-
         if util <= util_threshold:
             best_N = mid
             best_util = util
             low = mid + 1
         else:
             high = mid - 1
-
     return best_N, best_util
 
 

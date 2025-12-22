@@ -32,28 +32,20 @@ def run_sim(N, alpha, simtime=30, B=100, L=30, l=1500, qlimit=-1):
 
 
 def is_queue_stable(N, alpha, T1=20, T2=40, threshold=2):
-    """
-    Проверяет, ограничена ли очередь:
-    maxQ(T2) - maxQ(T1) <= threshold
-    """
+    # Проверяет, ограничена ли очередь:
+    # maxQ(T2) - maxQ(T1) <= threshold
     q1 = run_sim(N, alpha, simtime=T1)
     q2 = run_sim(N, alpha, simtime=T2)
-
     if q1 is None or q2 is None:
         return False
-
     print(f"    N={N}: maxQ({T1})={q1}, maxQ({T2})={q2}")
-
     return (q2 - q1) <= threshold
 
 
 def find_max_stable_N(alpha, max_search=500):
-    """
-    Ищет максимальное N, при котором очередь ограничена.
-    """
+    # Ищет максимальное N, при котором очередь ограничена.
     best_N = 0
     low, high = 1, max_search
-
     while low <= high:
         mid = (low + high) // 2
         print(f"Проверка N={mid}...")
@@ -62,7 +54,6 @@ def find_max_stable_N(alpha, max_search=500):
             low = mid + 1
         else:
             high = mid - 1
-
     return best_N
 
 
